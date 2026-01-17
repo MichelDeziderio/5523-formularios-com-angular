@@ -1,1 +1,311 @@
 /* You can add global styles to this file, and also import other style files */
+
+:host {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  padding: 24px;
+
+  /* Vars no escopo do componente */
+  --ff-bg: #ffffff;
+  --ff-text: #1f1f1f;
+  --ff-placeholder: #9aa0a6;
+
+  --ff-border: #e6e6e6;
+  --ff-border-hover: #1f1f1f;
+  /* preto */
+  --ff-border-focus: #6b5bd6;
+  /* roxo */
+  --ff-border-error: #d92d20;
+  /* vermelho */
+  --ff-border-disabled: #d0d5dd;
+
+  --ff-label: #6b7280;
+  --ff-label-disabled: #98a2b3;
+
+  --ff-text-disabled: #98a2b3;
+  --ff-error: #d92d20;
+  --ff-hint: #667085;
+
+  --ff-ring: rgba(107, 91, 214, 0.18);
+}
+
+$form-radius: 4px;
+$form-border: 1px;
+$font-sm: 12px;
+
+/* ✅ PRINCIPAL: evita overflow por padding/border */
+:host,
+:host * {
+  box-sizing: border-box;
+}
+
+/* ✅ Container do form: 100% e sem estourar */
+.demo {
+  display: block;
+  /* sem grid */
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* garante que o form respeite a demo */
+.demo form {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* ========= FIELD ========= */
+.form-field {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 16px;
+  margin-top: 8px;
+  padding: 4px;
+
+  /* evita elementos internos vazarem */
+  overflow: visible;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+/* ========= LABEL ========= */
+.form-field__label {
+  position: absolute;
+  left: 10px;
+  top: 20px;
+  transform: translateY(-50%);
+  padding: 0 4px;
+
+  font-size: 14px;
+  line-height: 1;
+
+  color: var(--ff-label);
+  background: var(--ff-bg);
+  pointer-events: none;
+  user-select: none;
+
+  transition: 140ms ease;
+}
+
+/* ========= CONTROL ========= */
+.form-field__control {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+
+  height: 48px;
+  padding: 10px 12px;
+
+  border-radius: $form-radius;
+  border: $form-border solid var(--ff-border);
+  background: var(--ff-bg);
+  color: var(--ff-text);
+
+  outline: none;
+  transition: border-color 140ms ease, box-shadow 140ms ease, background 140ms ease;
+
+  /* necessário pro floating label */
+  &::placeholder {
+    color: transparent;
+  }
+
+  &:hover {
+    border-color: var(--ff-border-hover);
+  }
+
+  &:focus {
+    border-color: var(--ff-border-focus);
+    box-shadow: 0 0 0 4px var(--ff-ring);
+  }
+
+  &:disabled {
+    border-color: var(--ff-border-disabled);
+    background: #f9fafb;
+    color: var(--ff-text-disabled);
+    cursor: not-allowed;
+
+    &:hover {
+      border-color: var(--ff-border-disabled);
+    }
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+}
+
+/* ========= TEXTAREA ========= */
+textarea.form-field__control {
+  height: auto;
+  min-height: 120px;
+  padding: 12px;
+  resize: vertical;
+}
+
+/* textarea: label começa um pouco mais baixo */
+.form-field:has(textarea.form-field__control) .form-field__label {
+  top: 14px;
+  transform: none;
+}
+
+/* ========= SELECT ========= */
+select.form-field__control {
+  appearance: none;
+  padding-right: 34px;
+
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--ff-placeholder) 50%),
+    linear-gradient(135deg, var(--ff-placeholder) 50%, transparent 50%);
+  background-position: calc(100% - 18px) 17px, calc(100% - 12px) 17px;
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+}
+
+.form-field:has(select.form-field__control:valid) .form-field__label {
+  top: 0;
+  transform: translateY(-50%);
+  font-size: 12px;
+}
+
+/* ========= FLOAT LABEL ========= */
+.form-field:has(.form-field__control:focus) .form-field__label {
+  top: 0;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: var(--ff-border-focus);
+}
+
+/* quando tem valor (input/textarea) */
+.form-field:has(input.form-field__control:not(:placeholder-shown)) .form-field__label,
+.form-field:has(textarea.form-field__control:not(:placeholder-shown)) .form-field__label {
+  top: 0;
+  transform: translateY(-50%);
+  font-size: 12px;
+}
+
+/* textarea: quando sobe, volta pro transform padrão */
+.form-field:has(textarea.form-field__control:focus) .form-field__label,
+.form-field:has(textarea.form-field__control:not(:placeholder-shown)) .form-field__label {
+  top: 0;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: var(--ff-border-focus);
+}
+
+/* ========= META / ERROS ========= */
+.form-field__error {
+  display: block;
+  margin-top: 6px;
+  font-size: $font-sm;
+  color: var(--ff-error);
+}
+
+.form-field__hint {
+  display: block;
+  margin-top: 6px;
+  font-size: $font-sm;
+  color: var(--ff-hint);
+}
+
+.form-field__meta {
+  width: 100%;
+  max-width: 100%;
+
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+
+  margin-top: 6px;
+}
+
+.form-field__counter {
+  font-size: $font-sm;
+  color: var(--ff-hint);
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+/* ========= ERROR STATE ========= */
+.form-field.is-error {
+  .form-field__control {
+    border-color: var(--ff-border-error);
+
+    &:hover {
+      border-color: var(--ff-border-error);
+    }
+
+    &:focus {
+      border-color: var(--ff-border-error);
+      box-shadow: 0 0 0 4px rgba(217, 45, 32, 0.12);
+    }
+  }
+
+  .form-field__label {
+    color: var(--ff-border-error);
+  }
+
+  &:has(.form-field__control:focus) .form-field__label,
+  &:has(input.form-field__control:not(:placeholder-shown)) .form-field__label,
+  &:has(textarea.form-field__control:not(:placeholder-shown)) .form-field__label,
+  &:has(select.form-field__control:valid) .form-field__label {
+    color: var(--ff-border-error);
+  }
+}
+
+/* ========= DISABLED STATE ========= */
+.form-field.is-disabled {
+  .form-field__label {
+    color: var(--ff-label-disabled);
+  }
+}
+
+/* ========= BUTTONS ========= */
+.actions {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  margin-bottom: 30px;
+}
+
+.btn {
+  height: 48px;
+  padding: 0 14px;
+  border-radius: 30px;
+  width: 100px;
+  border: none;
+  background-color: #6750A4;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  transition: ease 0.2s all;
+
+  &:hover {
+    opacity: 0.9;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  &--ghost {
+    background: transparent;
+    color: #6750A4;
+    border: 1px solid #6750A4;
+
+    &:hover {
+      background: rgba(103, 80, 164, 0.1);
+    }
+  }
+}
