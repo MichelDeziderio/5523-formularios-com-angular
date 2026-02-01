@@ -1,9 +1,10 @@
 import { Component, signal } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DOMINIO_OPTIONS_PROFILE } from '../../utils/enums-profile.data';
 import { StepperSidebarComponent } from '../../ui/stepper-sidebar/stepper-sidebar.component';
 import { StepperTopbarComponent } from '../../ui/stepper-topbar/stepper-topbar.component';
 import { FakeSelectRf } from '../../ui/fake-select-rf/fake-select-rf';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-wizard',
@@ -11,7 +12,8 @@ import { FakeSelectRf } from '../../ui/fake-select-rf/fake-select-rf';
     ReactiveFormsModule, 
     StepperSidebarComponent, 
     StepperTopbarComponent,
-    FakeSelectRf
+    FakeSelectRf,
+    CommonModule
   ],
   templateUrl: './wizard.html',
 })
@@ -31,9 +33,9 @@ export class Wizard {
   ];
 
   fg = new FormGroup({
-    ageRange: new FormControl(null),
-    incomeRange: new FormControl(null),
-    investableWealth: new FormControl(null),
+    ageRange: new FormControl(null, Validators.required),
+    incomeRange: new FormControl(null, Validators.required),
+    investableWealth: new FormControl(null, Validators.required),
   });
 
   get ageRangeControl() {
