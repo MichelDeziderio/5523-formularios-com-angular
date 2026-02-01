@@ -1,0 +1,29 @@
+<div class="grid">
+  <app-stepper-sidebar class="desktop-only" [steps]="steps" [current]="step()"></app-stepper-sidebar>
+  <section class="content">
+    <app-stepper-topbar class="mobile-only" [steps]="steps" [current]="step()"></app-stepper-topbar>
+
+    <div class="card">
+      <header class="head">
+        <h2 class="h2">{{ steps[step()] }}</h2>
+      </header>
+
+      <div [formGroup]="fg" class="step">
+        <div class="field">
+          <label>Idade</label>
+          <app-fake-select-rf formControlName="ageRange" [options]="dominios.ageRange"></app-fake-select-rf>
+        </div>
+        <div class="field">
+          <label>Renda Mensal</label>
+          <app-fake-select-rf formControlName="incomeRange" [options]="dominios.incomeRange"></app-fake-select-rf>
+        </div>
+        <div class="field">
+          <label>Patrimônio investível</label>
+          <app-fake-select-rf formControlName="investableWealth" [options]="dominios.investableWealth"></app-fake-select-rf>
+        </div>
+
+        <button class="btn primary" type="button" (click)="save()">Próximo</button>
+      </div>
+    </div>
+  </section>
+</div>

@@ -14,8 +14,6 @@ export class LoginPage {
 
   form!: FormGroup;
 
-  
-
   constructor(
     private fb: FormBuilder, 
     private auth: AuthService, 
@@ -34,7 +32,7 @@ export class LoginPage {
 
     try {
       this.auth.login(this.form.getRawValue());
-      this.router.navigateByUrl('/anyinvest/perfil');
+      this.router.navigateByUrl('/anyinvest/descubra-seu-perfil');
     } catch (e: any) {
       this.error = e?.message ?? 'Erro ao entrar';
     }
