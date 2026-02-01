@@ -1,59 +1,33 @@
-# 5523AnyInvest
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.5.
+![Any Invest](https://github.com/MichelDeziderio/5523-formularios-com-angular/blob/projeto-base/src/assets/images/Front-end-5523%20-%20Formul%C3%A1rios%20com%20Angular.png)
 
-## Development server
+![](https://img.shields.io/github/license/alura-cursos/android-com-kotlin-personalizando-ui)
 
-To start a local development server, run:
+# Any Invest
 
-```bash
-ng serve
-```
+Compreender o papel dos formulários em aplicações Angular, entender por que utilizar formulários reativos e desenvolver formulários ao longo do curso. 
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## 🔨 Funcionalidades do projeto
 
-## Code scaffolding
+Criar formulários simulando aplicações reais, centralizando regras de négocio no typeScript, validação de campos, personalização de validações de campos e criação de formulários dinâmicos.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
-```bash
-ng generate component component-name
-```
+## ✔️ Técnicas e tecnologias utilizadas
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+As técnicas e tecnologias utilizadas pra isso são:
 
-```bash
-ng generate --help
-```
+- `Angular`
+- `Angular CLI`
+ 
+E muito mais!
 
-## Building
+## 🛠️ Abrir e rodar o projeto
 
-To build the project run:
+Para abrir e rodar o projeto, execute `npm i` para instalar as dependências e ng serve para iniciar o projeto.
 
-```bash
-ng build
-```
+Depois, acesse [http://localhost:4200/](http://localhost:4200/) no seu navegador.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## 📚 Mais informações do curso
 
-## Running unit tests
+O objetivo deste curso é ir além da criação de formulários no Angular, compartilhando experiências reais para evitar soluções instáveis, imprevisíveis ou pouco escaláveis.
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

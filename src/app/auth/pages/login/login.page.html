@@ -1,0 +1,37 @@
+<section class="auth">
+  <div class="card auth__card">
+    <div class="auth__grid">
+      <div class="auth__art">
+        <div class="images">
+          <img src="assets/login_desktop.png" alt="Faça seu login">
+          <img src="assets/login_mobile.png" alt="Faça seu login">
+        </div>
+      </div>
+
+      <div class="auth__form">
+        <h2 class="h2 auth__form__title">Login</h2>
+        <p class="p auth__form__subtitle">Acesse com seu e-mail e senha.</p>
+
+        @if (error) {
+          <div class="error">{{ error }}</div>
+        }
+
+        <form (ngSubmit)="submit()" [formGroup]="form" class="form" autocomplete="off">
+          <div class="field">
+            <label>Email</label>
+            <input class="input" formControlName="email" placeholder="Digite seu e-mail" />
+          </div>
+
+          <div class="field">
+            <label>Senha</label>
+            <input class="input" type="password" formControlName="password" placeholder="Digite sua senha" />
+          </div>
+
+          <div class="actions">
+            <button class="btn primary" type="submit">Entrar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
