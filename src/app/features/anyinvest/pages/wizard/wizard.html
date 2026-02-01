@@ -22,8 +22,40 @@
           <app-fake-select-rf formControlName="investableWealth" [options]="dominios.investableWealth"></app-fake-select-rf>
         </div>
 
-        <button class="btn primary" type="button" (click)="save()">Próximo</button>
+        <button class="btn primary" type="button" (click)="save()" [disabled]="fg.invalid">Próximo</button>
       </div>
+
+      <pre style="margin-padding: 16px; border: solid silver 1px">
+        Formgroup:
+          status: {{ fg.status }}
+          dirty: {{ fg.dirty }}
+          touched: {{ fg.touched }}
+          value: {{ fg.value | json }}
+
+        Controls:
+          ageRangeControl: 
+            status: {{ageRangeControl.status}}
+            dirty: {{ageRangeControl.dirty}}
+            touched: {{ageRangeControl.touched}}
+            value: {{ageRangeControl.value | json}}
+          
+          incomeRangeControl: 
+            status: {{incomeRangeControl.status}}
+            dirty: {{incomeRangeControl.dirty}}
+            touched: {{incomeRangeControl.touched}}
+            value: {{incomeRangeControl.value | json}}
+          
+          investableWealthControl: 
+            status: {{investableWealthControl.status}}
+            dirty: {{investableWealthControl.dirty}}
+            touched: {{investableWealthControl.touched}}
+            value: {{investableWealthControl.value | json}}
+
+          Erros:
+            ageRangeControlErros: {{ageRangeControl.errors | json}}
+            incomeRangeControlErros: {{incomeRangeControl.errors | json}}
+            investableWealthControlErros: {{investableWealthControl.errors | json}}
+      </pre>
     </div>
   </section>
 </div>
