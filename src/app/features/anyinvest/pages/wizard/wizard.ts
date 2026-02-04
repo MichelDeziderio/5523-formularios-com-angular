@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DOMINIO_OPTIONS_PROFILE } from '../../utils/enums-profile.data';
 import { StepperSidebarComponent } from '../../ui/stepper-sidebar/stepper-sidebar.component';
 import { StepperTopbarComponent } from '../../ui/stepper-topbar/stepper-topbar.component';
@@ -32,22 +32,17 @@ export class Wizard {
     'Preferências'
   ];
 
-  fg = new FormGroup({
-    ageRange: new FormControl(null, Validators.required),
-    incomeRange: new FormControl(null, Validators.required),
-    investableWealth: new FormControl(null, Validators.required),
-  });
+  fg!: FormGroup;
 
-  get ageRangeControl() {
-    return this.fg.get('ageRange') as FormControl;
-  }
 
-  get incomeRangeControl() {
-    return this.fg.get('incomeRange') as FormControl;
-  }
-
-  get investableWealthControl() {
-    return this.fg.get('investableWealth') as FormControl;
+  constructor(
+    private fb: FormBuilder
+  ) {
+    this.fg = this.fb.group({
+      ageRange: [null, Validators.required],
+      incomeRange: [null, Validators.required],
+      investableWealth: [null, Validators.required],
+    })
   }
 
   save() {
